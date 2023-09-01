@@ -24,6 +24,12 @@ app.use(xss());
 app.use(mongoSanitize());
 
 app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5000", "https://theme-picker.onrender.com/"],
+  })
+);
+app.options("*", cors());
 
 app.use("/api/v1", routes);
 
