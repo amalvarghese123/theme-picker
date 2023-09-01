@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --color-light-theme: #000;
+  --bg-light-theme: #fff;
+  --color-dark-theme: #fff;
+  --bg-dark-theme: #000;
+  --color-pink-theme: #000;
+  --bg-pink-theme: pink;
+  --color-orange-theme: #000;
+  --bg-orange-theme: orange;
+}
+div.app-container {
+  width: 100%;
+  height: 100vh;
+}
+header.app-header {
+  padding: 15px;
+  box-shadow: 0px 1px 10px #999;
+}
+nav.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 20px;
+}
+span.avatar {
+  text-transform: capitalize;
+}
+span.avatar span.logout:hover {
+  cursor: pointer;
+}
+span.avatar span.name {
+  margin-right: 10px;
+}
+/**form**/
+.form-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+form.form {
+  border: 1px solid;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 20px;
+  width: 300px;
+  margin-bottom: auto;
+}
+form.form h2 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+form.form input,
+label {
+  display: block;
+  width: 100%;
+}
+form.form label {
+  margin-bottom: 5px;
+}
+form.form input {
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 5px 10px;
+  outline: none;
+}
+form.form input:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+.mb-3 {
+  margin-bottom: 7px;
+}
+.mb-5 {
+  margin-bottom: 25px;
+}
+form.form button.btn {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+form.form button.btn:active {
+  background-color: #0a58ca;
+  border-color: #0a53be;
+}
+/**themes**/
+.theme-light {
+  color: var(--color-light-theme);
+  background-color: var(--bg-light-theme);
+}
+.theme-dark {
+  color: var(--color-dark-theme);
+  background-color: var(--bg-dark-theme);
+}
+.theme-pink {
+  color: var(--color-pink-theme);
+  background-color: var(--bg-pink-theme);
+}
+.theme-orange {
+  color: var(--color-orange-theme);
+  background-color: var(--bg-orange-theme);
+}
