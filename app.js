@@ -4,9 +4,9 @@ const path = require("path");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
-const errorHandler = require("./middlewares/error-handler");
-const routes = require("./routes/v1");
-const { RouteNotFound } = require("./errors/error-classes/errorClasses");
+const errorHandler = require("./src/middlewares/error-handler");
+const routes = require("./src/routes/v1");
+const { RouteNotFound } = require("./src/errors/error-classes/errorClasses");
 
 const app = express();
 
@@ -38,12 +38,17 @@ app.use((req, res, next) => {
   next(new RouteNotFound(`Api Not found`));
 });
 
-app.use(express.static(path.join(__dirname, "../client/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-// if (process.env.NODE_ENV === "production") {
-// }
+// app.use(express.static(path.join(__dirname, "../client/build")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  );
+}
 
 app.use(errorHandler);
 
