@@ -14,10 +14,7 @@ const auth = async (req, res, next) => {
   ) {
     try {
       accessToken = req.headers.authorization.split(" ")[1];
-      const decodedPayload = jwt.verify(
-        accessToken,
-        process.env.JWT_SECRET_KEY
-      );
+      const decodedPayload = jwt.verify(accessToken, process.env.JWT_SECRET);
       const user = await User.findById(decodedPayload._id).select("-password");
       if (!user) throw new DocumentNotFound("User doesn't exist in database");
       req.user = user;

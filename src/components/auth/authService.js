@@ -73,14 +73,14 @@ class AuthService {
   }
 
   generateAccessToken(payload) {
-    const accessToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+    const accessToken = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_ACCESS_TOKEN_EXPIRES_IN,
     });
     return accessToken;
   }
 
   generateRefreshToken(payload) {
-    const refreshToken = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+    const refreshToken = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_REFRESH_TOKEN_EXPIRES_IN,
     });
     return refreshToken;
@@ -88,7 +88,7 @@ class AuthService {
 
   isTokenExpired(token) {
     try {
-      jwt.verify(token, process.env.JWT_SECRET_KEY);
+      jwt.verify(token, process.env.JWT_SECRET);
     } catch (error) {
       if (error.name === "TokenExpiredError") {
         return true;
